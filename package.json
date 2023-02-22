@@ -1,0 +1,27 @@
+{
+  "name": "org-info-generator",
+  "version": "1.0.0",
+  "description": "\u0016Command Line Org Info Generator.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dearbojack/Org-Info-Generator.git"
+  },
+  "keywords": [
+    "org-info",
+    "cli",
+    "generator"
+  ],
+  "author": "Dali Han",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dearbojack/Org-Info-Generator/issues"
+  },
+  "homepage": "https://github.com/dearbojack/Org-Info-Generator#readme"
+}
