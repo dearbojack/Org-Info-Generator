@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "npm run test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,12 @@
   ],
   "author": "Dali Han",
   "license": "MIT",
+  "dependencies": {
+    "inquirer": "^9.1.4"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
   "bugs": {
     "url": "https://github.com/dearbojack/Org-Info-Generator/issues"
   },
