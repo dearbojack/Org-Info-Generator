@@ -13,3 +13,12 @@ const render = require("./src/page-template.js");
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
+// questions to get manager data
+
+// questions to get team member data
+
+// inquirer to get user answers & build up team array
+
+// generate html
+
+// write file to path
