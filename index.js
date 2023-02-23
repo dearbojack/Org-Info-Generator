@@ -9,7 +9,8 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
-
+// array to store objects
+const team = [];
 
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
@@ -78,8 +79,6 @@ const memberQuestions = [
 
 // function init
 function init() {
-  // array to store objects
-  const team = [];
   // nested inquirer call
   // inquirer to get manager data
   inquirer.prompt(managerQuestions).then(managerAnswers => {
@@ -92,40 +91,44 @@ function init() {
     );
     // push object to array
     team.push(manager);
+    // call promptMember() for member data
+    promptMember();
+  });
+}
 
+function promptMember() {
     // call inquirer again to get member data
-    inquirer.prompt(memberQuestions).then(memberAnswers => {
-      // create member objects
-      // Engineer case
-      if(memberAnswers.role === "Engineer") {
-        // create engineer object
-        const engineer = new Engineer(
-          memberAnswers.name,
-          memberAnswers.id,
-          memberAnswers.email,
-          memberAnswers.github
-        );
-        // push to team
-        team.push(engineer);
-      } else if (memberAnswers.role === "Intern") {
-        // create intern object
-        const intern = new Intern(
-          memberAnswers.name,
-          memberAnswers.id,
-          memberAnswers.email,
-          memberAnswers.school
-        );
-        // push to team
-        team.push(intern);
-      } else {
-        return;
-      }
-      // generate html
+  inquirer.prompt(memberQuestions).then(memberAnswers => {
+    // if & only when user selects Finish then break & render
+    if(memberAnswers.role === "Finish building the team") {
       const generatedHtml = render(team);
-
-      // write html to path
       writeToPath(outputPath, generatedHtml);
-    })
+      return;
+    }
+    // Engineer case
+    if(memberAnswers.role === "Engineer") {
+      // create engineer object
+      const engineer = new Engineer(
+        memberAnswers.name,
+        memberAnswers.id,
+        memberAnswers.email,
+        memberAnswers.github
+      );
+      // push to team
+      team.push(engineer);
+    } else if (memberAnswers.role === "Intern") {
+      // create intern object
+      const intern = new Intern(
+        memberAnswers.name,
+        memberAnswers.id,
+        memberAnswers.email,
+        memberAnswers.school
+      );
+      // push to team
+      team.push(intern);
+    }
+    // run adding member until user select Finish
+    promptMember();
   });
 }
 
