@@ -81,3 +81,9 @@ const memberQuestions = [
 // generate html
 
 // write file to path
+function writeToPath(path, file) {
+  fs.writeFile(path, file, (error) => {
+    if(error) throw error;
+    console.log(`File successfully written to ${path}!`)
+  })
+}
