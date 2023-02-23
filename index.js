@@ -14,8 +14,67 @@ const render = require("./src/page-template.js");
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 
 // questions to get manager data
-
+const managerQuestions = [
+  {
+    type: 'input',
+    name: 'name',
+    message: "What is the manager's name?"
+  },
+  {
+    type: 'input',
+    name: 'id',
+    message: "What is the manager's id?"
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: "What is the manager's email?"
+  },
+  {
+    type: 'input',
+    name: 'officeNumber',
+    message: "What is the manager's office number?"
+  }
+];
 // questions to get team member data
+const memberQuestions = [
+  {
+    type: 'list',
+    name: 'role',
+    message: 'Which type of team member would you like to add?',
+    choices: ['Engineer', 'Intern', 'Finish building the team'],
+  },
+  {
+    type: 'input',
+    name: 'name',
+    message: "What's the team member's name?",
+    when: (answers) => answers.role !== 'Finish building the team'
+  },
+  {
+    type: 'input',
+    name: 'id',
+    message: "What's the team member's id?",
+    when: (answers) => answers.role !== 'Finish building the team'
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: "What's the team member's name?",
+    when: (answers) => answers.role !== 'Finish building the team'
+  },
+  {
+    type: 'input',
+    name: 'github',
+    message: "What's the engineer's GitHub username?",
+    when: (answers) => answers.role === 'Engineer'
+  },
+  {
+    type: 'input',
+    name: 'school',
+    message: "What's the intern's school?",
+    when: (answers) => answers.role === 'Intern'
+  }
+];
 
 // inquirer to get user answers & build up team array
 
