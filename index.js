@@ -95,7 +95,7 @@ function init() {
     promptMember();
   });
 }
-
+// function to get team member data
 function promptMember() {
     // call inquirer again to get member data
   inquirer.prompt(memberQuestions).then(memberAnswers => {
@@ -131,7 +131,6 @@ function promptMember() {
     promptMember();
   });
 }
-
 
 // write file to path
 function writeToPath(path, file) {
