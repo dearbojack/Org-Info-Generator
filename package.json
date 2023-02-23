@@ -21,7 +21,7 @@
   "author": "Dali Han",
   "license": "MIT",
   "dependencies": {
-    "inquirer": "^9.1.4"
+    "inquirer": "^8.2.5"
   },
   "devDependencies": {
     "jest": "^24.9.0"
