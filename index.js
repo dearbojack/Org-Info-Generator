@@ -76,9 +76,24 @@ const memberQuestions = [
   }
 ];
 
-// inquirer to get user answers & build up team array
+// function init
+function init() {
+  // nested inquirer call
+  // inquirer to get manager data
+  inquirer.prompt(managerQuestions).then(managerAnswers => {
+    // create manager object
 
-// generate html
+    // call inquirer again
+    inquirer.prompt(memberQuestions).then(memberAnswers => {
+      // create member objects
+
+      // generate html
+
+      // write html to path
+    })
+  });
+}
+
 
 // write file to path
 function writeToPath(path, file) {
@@ -87,3 +102,6 @@ function writeToPath(path, file) {
     console.log(`File successfully written to ${path}!`)
   })
 }
+
+// call init to start
+init();
