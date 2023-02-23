@@ -59,7 +59,7 @@ const memberQuestions = [
   {
     type: 'input',
     name: 'email',
-    message: "What's the team member's name?",
+    message: "What's the team member's email?",
     when: (answers) => answers.role !== 'Finish building the team'
   },
   {
