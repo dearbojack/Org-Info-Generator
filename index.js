@@ -78,18 +78,53 @@ const memberQuestions = [
 
 // function init
 function init() {
+  // array to store objects
+  const team = [];
   // nested inquirer call
   // inquirer to get manager data
   inquirer.prompt(managerQuestions).then(managerAnswers => {
     // create manager object
+    const manager = new Manager(
+      managerAnswers.name,
+      managerAnswers.id,
+      managerAnswers.email,
+      managerAnswers.officeNumber
+    );
+    // push object to array
+    team.push(manager);
 
-    // call inquirer again
+    // call inquirer again to get member data
     inquirer.prompt(memberQuestions).then(memberAnswers => {
       // create member objects
-
+      // Engineer case
+      if(memberAnswers.role === "Engineer") {
+        // create engineer object
+        const engineer = new Engineer(
+          memberAnswers.name,
+          memberAnswers.id,
+          memberAnswers.email,
+          memberAnswers.github
+        );
+        // push to team
+        team.push(engineer);
+      } else if (memberAnswers.role === "Intern") {
+        // create intern object
+        const intern = new Intern(
+          memberAnswers.name,
+          memberAnswers.id,
+          memberAnswers.email,
+          memberAnswers.school
+        );
+        // push to team
+        team.push(intern);
+      } else {
+        return;
+      }
       // generate html
+      const generatedHtml = render(team);
 
       // write html to path
+      writeToPath(outputPath, generatedHtml);
     })
   });
 }
