@@ -133,11 +133,14 @@ function promptMember() {
 }
 
 // write file to path
-function writeToPath(path, file) {
-  fs.writeFile(path, file, (error) => {
-    if(error) throw error;
-    console.log(`File successfully written to ${path}!`)
-  })
+async function writeToPath(path, file) {
+  try {
+    await fs.promises.writeFile(path, file);
+    console.log(`File successfully written to ${path}!`);
+  } catch (error) {
+    // Handle error
+    console.error(`Error writing file to ${path}: ${error}`);
+  }
 }
 
 // call init to start
